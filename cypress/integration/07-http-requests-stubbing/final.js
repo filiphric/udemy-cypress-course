@@ -100,7 +100,7 @@ it('shows error when adding new item', () => {
 
   cy
     .log('error message disappears')
-    .get('#note')
+    .get('#errorMessage')
     .should('not.be.visible');
   
 });
