@@ -1,0 +1,14 @@
+{
+  "name": "todomvc-testing",
+  "version": "1.0.0",
+  "description": "Testing TodoMVC using Cypress",
+  "scripts": {
+    "open": "cross-env open http://localhost:3000",
+    "start": "./node_modules/.bin/json-server --static . data.json -m middleware.js --port 3000 -w"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "cross-env": "6.0.3",
+    "json-server": "0.15.1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "udemy-cypress-workshop",
+  "version": "1.0.0",
+  "description": "Cypress workshop for udemy course",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "install:todomvc": "cd todomvc && npm install",
+    "postinstall": "npm run install:todomvc",
+    "reset:todomvc": "cd todomvc && npm run reset",
+    "start": "cd todomvc && npm start"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^5.0.2",
+    "cypress": "^4.0.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-chai-friendly": "^0.5.0",
+    "eslint-plugin-cypress": "^2.7.0",
+    "http-server": "^0.12.1",
+    "json-server": "0.15.1",
+    "json-server-reset": "1.2.0",
+    "node-gyp": "^6.0.1"
+  },
+  "keywords": [],
+  "author": "Filip Hric",
+  "license": "ISC"
+}
