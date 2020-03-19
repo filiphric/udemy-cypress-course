@@ -18,7 +18,7 @@
   <section class="todoapp">
     <header class="header">
       <h1 data-cy="app-title">todos</h1>
-      <input id="add-todo" class="new-todo" autocomplete="off" placeholder="What needs to be done?" data-cy="todo-input" :value="newTodo"
+      <input id="add-todo" class="new-todo" autocomplete="off" placeholder="What needs to be done?" :value="newTodo"
         @input="setNewTodo" @keyup.enter="addTodo">
     </header>
     <section class="main" v-show="todos.length" v-cloak>

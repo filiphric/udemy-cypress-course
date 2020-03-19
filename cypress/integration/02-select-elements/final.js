@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-it('gets input element', () => {
+it('gets the same input element using different selectors', () => {
 
   cy
     .visit('localhost:3000');
@@ -21,10 +21,6 @@ it('gets input element', () => {
   cy
     .get('[placeholder="What needs to be done?"]');
     
-  // select via data-cy attribute
-  cy
-    .get('[data-cy="todo-input"]');  
-
   // select via relation
   cy
     .get('header input');

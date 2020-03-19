@@ -15,8 +15,6 @@ it('gets input element', () => {
 
   // select via attribute
 
-  // select via data-cy attribute
-
   // select via relation
 
 });
