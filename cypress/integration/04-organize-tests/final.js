@@ -7,7 +7,7 @@ beforeEach(() => {
     
 });
 
-describe('Suite 1', () => {
+describe('Group 1', () => {
 
   it('Test one', () => {
   
@@ -19,7 +19,7 @@ describe('Suite 1', () => {
   
 });
 
-describe('Suite 2', () => {
+describe('Group 2', () => {
 
   it('Test three', () => {
   

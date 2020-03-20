@@ -1,9 +1,13 @@
 /// <reference types="cypress" />
 
-it('Adds one item', () => {
+beforeEach( () => {
 
   cy
     .visit('localhost:3000');
+
+});
+
+it('Adds one item', () => {
 
   cy
     .get('.new-todo')
@@ -16,9 +20,6 @@ it('Adds one item', () => {
 });
 
 it('Adds two items', () => {
-
-  cy
-    .visit('localhost:3000');
 
   // add first todo
   cy
@@ -37,9 +38,6 @@ it('Adds two items', () => {
 });
 
 it('Marks item as completed', () => {
-
-  cy
-    .visit('localhost:3000');
 
   cy
     .get('.new-todo')
