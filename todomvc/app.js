@@ -127,7 +127,7 @@
     data: {
       file: null
     },
-    el: '.app',
+    el: '#app',
     created () {
       this.$store.dispatch('loadTodos');
     },
@@ -146,7 +146,7 @@
       },
       errorMessage () {
         return this.$store.getters.errorMessage;
-      },
+      }
     },
 
     // methods that implement data logic.
@@ -175,6 +175,11 @@
         this.$store.dispatch('addEntireTodo', { title, completed });
       }
     }
+  });
+
+  var el = document.getElementById('todo-list');
+  var sortable = Sortable.create(el, {
+    animation: 150
   });
 
   window.app = app;
