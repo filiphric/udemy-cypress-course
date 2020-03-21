@@ -12,8 +12,27 @@ body {
 	padding: 0;
 }
 
+button.login-button {
+  background: #b83f45;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+button.login-button:hover {
+  background: #943338;
+  
+}
+
 button {
-	margin: 0;
+  margin: 0;
 	padding: 0;
 	border: 0;
 	background: none;
@@ -49,9 +68,9 @@ body {
 	display: none;
 }
 
-.todoapp {
+.todoapp, .login {
 	background: #fff;
-	margin: 130px 0 40px 0;
+	margin: 0px 0 40px 0;
 	position: relative;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
 	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -75,9 +94,9 @@ body {
 	color: #111111;
 }
 
-.todoapp h1 {
-	position: absolute;
-	top: -155px;
+.todoapp h1, h1 {
+	position: relative;
+	/* top: -155px; */
 	width: 100%;
 	font-size: 100px;
 	font-weight: 100;
@@ -85,7 +104,8 @@ body {
 	color: #b83f45;
 	-webkit-text-rendering: optimizeLegibility;
 	-moz-text-rendering: optimizeLegibility;
-	text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  margin-block-end: 1em;
 }
 
 .new-todo,
@@ -106,7 +126,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.new-todo {
+.new-todo, .login input {
 	padding: 16px 16px 16px 60px;
 	border: none;
 	background: rgba(0, 0, 0, 0.003);
@@ -243,6 +263,10 @@ body {
 	margin-bottom: 11px;
 	transition: color 0.2s ease-out;
 	font-weight: 600;
+}
+
+.active {
+  display: block;
 }
 
 .todo-list li .destroy:hover {
@@ -385,6 +409,27 @@ html .clear-completed:active {
 	.filters {
 		bottom: 10px;
 	}
+}
+
+.login input {
+  position: relative;
+	margin: 0;
+	width: 100%;
+	font-size: 24px;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: 1.4em;
+	color: inherit;
+	padding: 6px;
+	/* border: 1px solid #999; */
+	/* box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2); */
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 16px 16px 16px 60px;
+	/* border: none; */
+	background: #fff;
+	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
 
 #note {

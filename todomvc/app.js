@@ -121,13 +121,17 @@
     }
   });
 
-  // app Vue instance
-  const app = new Vue({
-    store,
-    data: {
-      file: null
+  const login = Vue.component('login', {
+    template: '#login'
+  });
+
+  const todoapp = Vue.component('todoapp-template', {
+    template: '#todoapp-template',
+    data() {
+      return {
+        show: false
+      };
     },
-    el: '#app',
     created () {
       this.$store.dispatch('loadTodos');
     },
@@ -169,19 +173,49 @@
       removeTodo (todo) {
         this.$store.dispatch('removeTodo', todo);
       },
-
-      // utility method for create a todo with title and completed state
-      addEntireTodo (title, completed = false) {
-        this.$store.dispatch('addEntireTodo', { title, completed });
+      rerender(){        
+        this.show = !this.show;
       }
-    }
+      // destroyShow: () => {
+      //   this.show = true;
+      //   console.log(this.show);
+      //   console.log('show');
+      // },
+      // destroyHide: () => {
+      //   this.show = false;
+      //   console.log(this.show);
+      //   console.log('don’t show');
+      // }      
+    },
   });
+
+  const routes = [
+    { path: '/', component: todoapp },
+    { path: '/login', component: login },
+    { path: '*', redirect: '/' }
+  ];
+
+  const router = new VueRouter({
+    routes // short for `routes: routes`
+  });
+
+  // app Vue instance
+  new Vue({
+    router,
+    store,
+    methods: {
+      
+    },
+    computed: {
+      errorMessage () {
+        return this.$store.getters.errorMessage;
+      }   
+    }
+  }).$mount('#app');
 
   var el = document.getElementById('todo-list');
   var sortable = Sortable.create(el, {
     animation: 150
   });
-
-  window.app = app;
 
 })();
