@@ -129,7 +129,7 @@
     template: '#todoapp-template',
     data() {
       return {
-        show: false
+        showByIndex: null
       };
     },
     created () {
@@ -173,9 +173,9 @@
       removeTodo (todo) {
         this.$store.dispatch('removeTodo', todo);
       },
-      rerender(){        
-        this.show = !this.show;
-      }
+      // rerender(){        
+      //   this.show = !this.show;
+      // }
       // destroyShow: () => {
       //   this.show = true;
       //   console.log(this.show);

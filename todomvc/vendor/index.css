@@ -250,7 +250,7 @@ body {
 }
 
 .todo-list li .destroy {
-	display: none;
+	display: block;
 	position: absolute;
 	top: 0;
 	right: 10px;
@@ -266,20 +266,21 @@ body {
 }
 
 .active {
-  display: block;
+  display: block !important;
+  color: #ff0101;
 }
 
-.todo-list li .destroy:hover {
+/* .todo-list li .destroy:hover {
 	color: #ff0101;
-}
+} */
 
 .todo-list li .destroy:after {
 	content: '×';
 }
 
-.todo-list li:hover .destroy {
+/* .todo-list li:hover .destroy {
 	display: block;
-}
+} */
 
 .todo-list li .edit {
 	display: none;

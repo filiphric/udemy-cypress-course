@@ -25,11 +25,11 @@
       </header>
       <section class="main" v-show="todos.length" v-cloak>
         <ul class="todo-list" id="todo-list">
-          <li v-for="todo in todos" class="todo" :key="todo.id" :class="{ completed: todo.completed }" v-on:mouseover="show = !show" v-on:mouseout="show = !show">
+          <li v-for="todo in todos" class="todo" :key="todo.id" :class="{ completed: todo.completed }" @mouseover="showByIndex = todo" @mouseout="showByIndex = null">
             <div class="view">
               <input class="toggle" type="checkbox" v-model="todo.completed" @click="completeTodo(todo)">
               <label>{{ todo.title }}</label>
-              <button class="destroy" v-if="show" @click="removeTodo(todo)"></button>
+              <button class="destroy" v-show="showByIndex === todo" @click="removeTodo(todo)"></button>
             </div>
           </li>
         </ul>
