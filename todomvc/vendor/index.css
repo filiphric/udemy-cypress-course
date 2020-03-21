@@ -433,7 +433,7 @@ html .clear-completed:active {
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 }
 
-#note {
+#errorMessage {
   -moz-box-shadow:    0 0 5px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background: #f85252;
@@ -453,6 +453,37 @@ html .clear-completed:active {
   z-index: 101;
   animation-name: slideUp;
   animation-duration: 4s;
+}
+
+#loginMessage {
+  -moz-box-shadow:    0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #58BC82;
+  top: -50px;
+  height: 24px;
+  padding: 16px;
+  box-shadow:         0 0 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-weight: 300;
+  left: 0;
+  line-height: 1.4em;
+  font-size: 18px;
+  overflow: hidden; 
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 101;
+  animation-name: slideDown;
+  animation-duration: 4s;
+}
+
+@-webkit-keyframes slideDown {
+  10%, 90% { -webkit-transform: translateY(50px); }
+  0%, 100% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes slideDown {
+  10%, 90% { -moz-transform: translateY(50px); }
+  0%, 100% { -moz-transform: translateY(0px); }
 }
 
 @-webkit-keyframes slideUp {

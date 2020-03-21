@@ -72,12 +72,6 @@
             console.error(e.response.data);
           });
       },
-      /**
-       * Sets text for the future todo
-       *
-       * @param {any} { commit }
-       * @param {string} todo Message
-       */
       setNewTodo ({ commit }, todo) {
         commit('SET_NEW_TODO', todo);
       },
@@ -117,7 +111,6 @@
       clearNewTodo ({ commit }) {
         commit('CLEAR_NEW_TODO');
       }
-     
     }
   });
 
@@ -147,9 +140,6 @@
       },
       todos () {
         return this.$store.getters.todos;
-      },
-      errorMessage () {
-        return this.$store.getters.errorMessage;
       }
     },
 
@@ -172,20 +162,7 @@
 
       removeTodo (todo) {
         this.$store.dispatch('removeTodo', todo);
-      },
-      // rerender(){        
-      //   this.show = !this.show;
-      // }
-      // destroyShow: () => {
-      //   this.show = true;
-      //   console.log(this.show);
-      //   console.log('show');
-      // },
-      // destroyHide: () => {
-      //   this.show = false;
-      //   console.log(this.show);
-      //   console.log('don’t show');
-      // }      
+      }  
     },
   });
 
