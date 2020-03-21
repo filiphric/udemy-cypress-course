@@ -40,15 +40,15 @@
     <section style="text-align: center">
       <h1>login</h1>
       <div class="login">
-        <input type="text" placeholder="user name" autocomplete="off">
-        <input type="password" placeholder="password" autocomplete="off">
+        <input type="text" placeholder="user name" autocomplete="off" :value="username" @input="setUsername">
+        <input type="password" placeholder="password" autocomplete="off" :value="password" @input="setPassword" @keyup.enter="loginSend">
       </div>
-      <button class="login-button" type=submit>Log in</button>
+      <button class="login-button" @click="loginSend">Log in</button>
     </section>
   </script>
 
   <section id="app">
-    <router-view></router-view>
+    <router-view :key="$route.path"></router-view>
     <footer class="info">
       <p>Written by
         <a href="http://evanyou.me">Evan You</a>
@@ -58,7 +58,7 @@
       </p>
     </footer>
     <div id="errorMessage" v-show="errorMessage" v-cloak>Sorry. There was an error creating todo item.</div>
-    <div id="loginMessage" v-show="loginMessage" v-cloak>User is logged in</div>
+    <div id="loginMessage" v-show="loggedIn" v-cloak>User is logged in</div>
   </section>
 
   <script src="vendor/polyfill.min.js"></script>

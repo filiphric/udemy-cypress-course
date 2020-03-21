@@ -14,13 +14,19 @@
       loading: true,
       todos: [],
       newTodo: '',
-      errorMessage: false
+      username: '',
+      password: '',
+      errorMessage: false,
+      loggedIn: false,
     },
     getters: {
       newTodo: state => state.newTodo,
       todos: state => state.todos,
       loading: state => state.loading,
-      errorMessage: state => state.errorMessage
+      errorMessage: state => state.errorMessage,
+      loggedIn: state => state.loggedIn,
+      username: state => state.username,
+      password: state => state.password
     },
     mutations: {
       SET_LOADING (state, flag) {
@@ -28,6 +34,9 @@
       },
       SHOW_ERROR (state, flag) {
         state.errorMessage = flag;
+      },
+      LOGGED_IN (state, flag) {
+        state.loggedIn = flag;
       },
       SET_TODOS (state, todos) {
         state.todos = todos;
@@ -52,6 +61,12 @@
       CLEAR_NEW_TODO (state) {
         state.newTodo = '';
         console.log('clearing new todo');
+      },
+      SET_USERNAME (state, username) {
+        state.username = username;
+      },
+      SET_PASSWORD (state, password) {
+        state.password = password;
       }
     },
     actions: {
@@ -110,12 +125,59 @@
       },
       clearNewTodo ({ commit }) {
         commit('CLEAR_NEW_TODO');
+      },
+      setUsername ({ commit }, username) {
+        commit('SET_USERNAME', username);
+      },
+      setPassword ({ commit }, password) {
+        commit('SET_PASSWORD', password);
+      },
+      login ({ commit, state }) {
+        const credentials = {
+          password: state.password,
+          username: state.username
+        };
+        axios.post('/login', credentials ).then((res) => {
+          if (res.status === 200) {
+            commit('LOGGED_IN', true);
+            setTimeout(() => {
+              commit('LOGGED_IN', false);
+            }, 4000);
+            document.cookie = 'auth=true';
+            router.push({ path: '/' });
+          }
+        });
+      },
+      loggedIn ({ commit }) {
+        commit('LOGGED_IN', true);
+        setTimeout(() => {
+          commit('LOGGED_IN', false);
+        }, 4000);
       }
     }
   });
 
   const login = Vue.component('login', {
-    template: '#login'
+    template: '#login',
+    computed: {
+      username () {
+        return this.$store.getters.username;
+      },
+      password () {
+        return this.$store.getters.password;
+      }
+    },
+    methods: {
+      setUsername (e) {
+        this.$store.dispatch('setUsername', e.target.value);
+      },
+      setPassword (e) {
+        this.$store.dispatch('setPassword', e.target.value);
+      },
+      loginSend () {
+        this.$store.dispatch('login');
+      }
+    }
   });
 
   const todoapp = Vue.component('todoapp-template', {
@@ -142,28 +204,23 @@
         return this.$store.getters.todos;
       }
     },
-
-    // methods that implement data logic.
-    // note there's no DOM manipulation here at all.
     methods: {
       setNewTodo (e) {
         this.$store.dispatch('setNewTodo', e.target.value);
       },
-
       addTodo (e) {
         e.target.value = '';
         this.$store.dispatch('addTodo');
         this.$store.dispatch('clearNewTodo');
       },
-
       completeTodo (todo) {
         this.$store.dispatch('completeTodo', todo);
       },
-
       removeTodo (todo) {
         this.$store.dispatch('removeTodo', todo);
-      }  
-    },
+      }
+        
+    }
   });
 
   const routes = [
@@ -180,19 +237,39 @@
   new Vue({
     router,
     store,
-    methods: {
-      
+    created() {
+      if (getCookie('auth')) {
+        this.$store.dispatch('loggedIn');
+
+      }
     },
     computed: {
       errorMessage () {
         return this.$store.getters.errorMessage;
-      }   
+      },
+      loggedIn() {
+        return this.$store.getters.loggedIn;
+      }
     }
   }).$mount('#app');
 
+  function getCookie(name){
+    console.log('I’m doing something');
+    var pattern = RegExp(name + '=.[^;]*');
+    var matched = document.cookie.match(pattern);
+    console.log(matched);
+    if(matched){
+      // var cookie = matched[0].split('=');
+      return true;
+    }
+    return false;
+  }
+
   var el = document.getElementById('todo-list');
-  var sortable = Sortable.create(el, {
-    animation: 150
-  });
+  if (el) {
+    var sortable = Sortable.create(el, {
+      animation: 150
+    });
+  } 
 
 })();

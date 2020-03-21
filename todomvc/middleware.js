@@ -15,6 +15,20 @@ module.exports = (req, res, next) => {
 
     return res.sendStatus(200);
   }
+
+  if (req.method === 'POST' && req.path === '/login') {
+
+    if (req.body.username === 'admin' && req.body.password === 'admin') {
+
+      return res.sendStatus(200);
+
+    } else {
+
+      return res.sendStatus(401);
+
+    }
+
+  }
   
   next();
     
