@@ -251,10 +251,8 @@
   }).$mount('#app');
 
   function getCookie(name){
-    console.log('I’m doing something');
     var pattern = RegExp(name + '=.[^;]*');
     var matched = document.cookie.match(pattern);
-    console.log(matched);
     if(matched){
       // var cookie = matched[0].split('=');
       return true;
