@@ -7,14 +7,6 @@ beforeEach( () => {
 
 });
 
-it('Should have one todo item', () => {
-
-  cy
-    .get('.todo')
-    .should('have.length', 1);
-  
-});
-
 it('Should have todo item with text "create list of todos"', () => {
 
   cy
@@ -29,7 +21,15 @@ it('Should have todo item with text "buy milk"', () => {
   
 });
 
-it.only('Should have todo item with text "wash dishes" on first position', () => {
+it('Should have one todo item', () => {
+
+  cy
+    .get('.todo')
+    .should('have.length', 1);
+  
+});
+
+it('Should have todo item with text "wash dishes" on first position', () => {
 
   cy
     .get('.todo')

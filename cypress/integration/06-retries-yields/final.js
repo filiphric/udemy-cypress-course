@@ -7,14 +7,6 @@ beforeEach( () => {
 
 });
 
-it('Should have one todo item', () => {
-
-  cy
-    .get('.todo', {timeout: 30000})
-    .should('have.length', 1);
-  
-});
-
 it('Should have todo item with text "create list of todos"', () => {
 
   cy
@@ -29,10 +21,18 @@ it('Should have todo item with text "create list of todos"', () => {
 it('Should have todo item with text "buy milk"', () => {
 
   cy
-    .get('.todo-list')
-    .find('li')
-    .eq(0)
-    .should('contain.text', 'buy milk');
+    .get('.todo-list') // yields ul element
+    .find('li') // yields 4 li elements
+    .eq(0) // yields li element 0
+    .should('contain.text', 'buy milk'); // makes assertion on element 0
+  
+});
+
+it('Should have one todo item', () => {
+
+  cy
+    .get('.todo', {timeout: 30000}) // retries until .todo element is found
+    .should('have.length', 1); // retries until number of yielded elements is 1
   
 });
 
