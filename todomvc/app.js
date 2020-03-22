@@ -16,7 +16,10 @@
       newTodo: '',
       username: '',
       password: '',
-      errorMessage: false,
+      errorMessage: {
+        show: false,
+        text: ''
+      },
       loggedIn: false,
     },
     getters: {
@@ -32,8 +35,11 @@
       SET_LOADING (state, flag) {
         state.loading = flag;
       },
-      SHOW_ERROR (state, flag) {
-        state.errorMessage = flag;
+      SHOW_ERROR (state, flag, e) {
+        state.errorMessage = {
+          show: flag,
+          text: 'Sorry. There was an error creating todo item.'
+        };
       },
       LOGGED_IN (state, flag) {
         state.loggedIn = flag;
@@ -102,10 +108,10 @@
                   
           commit('ADD_TODO', todo);
           
-        }).catch(function (error) {
-          commit('SHOW_ERROR', true);
+        }).catch( e => {
+          commit('SHOW_ERROR', true, e.message);
           setTimeout(() => {
-            commit('SHOW_ERROR', false);
+            commit('SHOW_ERROR', false, e.message);
           }, 4000);
             
         });
@@ -219,15 +225,13 @@
     }
   });
 
-  const routes = [
-    { path: '/', name: 'todoapp', component: todoapp },
-    { path: '/login', name: 'login', component: login },
-    { path: '*', redirect: {name: 'todoapp'} }
-  ];
-
   const router = new VueRouter({
     mode: 'history',
-    routes
+    routes: [
+      { path: '/', name: 'todoapp', component: todoapp },
+      { path: '/login', name: 'login', component: login },
+      { path: '*', redirect: {name: 'todoapp'} }
+    ]
   });
 
   // app Vue instance
@@ -237,7 +241,6 @@
     created() {
       if (getCookie('auth')) {
         this.$store.dispatch('loggedIn');
-
       }
     },
     computed: {

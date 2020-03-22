@@ -57,7 +57,7 @@
         <a href="http://todomvc.com">TodoMVC</a>
       </p>
     </footer>
-    <div id="errorMessage" v-show="errorMessage" v-cloak>Sorry. There was an error creating todo item.</div>
+    <div id="errorMessage" v-show="errorMessage.show" v-cloak>{{ errorMessage.text }}</div>
     <div id="loginMessage" v-show="loggedIn" v-cloak>User is logged in</div>
   </section>
 
