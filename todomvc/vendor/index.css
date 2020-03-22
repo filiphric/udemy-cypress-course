@@ -14,6 +14,7 @@ body {
 
 button.login-button {
   background: #b83f45;
+  cursor: pointer;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -437,7 +438,7 @@ html .clear-completed:active {
   -moz-box-shadow:    0 0 5px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background: #f85252;
-  bottom: 0;
+  top: -50px;
   height: 24px;
   padding: 16px;
   box-shadow:         0 0 5px rgba(0, 0, 0, 0.2);
@@ -451,7 +452,7 @@ html .clear-completed:active {
   right: 0;
   text-align: center;
   z-index: 101;
-  animation-name: slideUp;
+  animation-name: slideDown;
   animation-duration: 4s;
 }
 
