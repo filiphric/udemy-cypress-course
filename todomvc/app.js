@@ -48,10 +48,8 @@
         console.log('add todo', todoObject);
         state.todos.push(todoObject);
       },
-      COMPLETE_TODO (state, todo) {
-        let todos = state.todos;
-        console.log('check todo ' + todo.id);
-        console.log(todos.indexOf(todo));
+      COMPLETE_TODO (todo) {
+        console.log('complete todo ' + todo.id);
       },
       REMOVE_TODO (state, todo) {
         let todos = state.todos;
@@ -113,9 +111,7 @@
         });
       },
       completeTodo ({ commit }, todo) {
-        axios.patch(`/todos/${todo.id}`, {completed: !todo.completed}).then(() => {
-          commit('COMPLETE_TODO', todo);
-        });
+        axios.patch(`/todos/${todo.id}`, {completed: !todo.completed});
       },
       removeTodo ({ commit }, todo) {
         axios.delete(`/todos/${todo.id}`).then(() => {
@@ -224,13 +220,14 @@
   });
 
   const routes = [
-    { path: '/', component: todoapp },
-    { path: '/login', component: login },
-    { path: '*', redirect: '/' }
+    { path: '/', name: 'todoapp', component: todoapp },
+    { path: '/login', name: 'login', component: login },
+    { path: '*', redirect: {name: 'todoapp'} }
   ];
 
   const router = new VueRouter({
-    routes // short for `routes: routes`
+    mode: 'history',
+    routes
   });
 
   // app Vue instance

@@ -1,5 +1,11 @@
 module.exports = (req, res, next) => {
-  
+
+  if (req.method === 'GET' && req.path === '/login') {
+    
+    return res.sendFile(`${__dirname}/index.html`);
+
+  }
+
   if (req.method === 'POST' && req.path === '/reset') {
     req.app.db.setState({
       todos: []
