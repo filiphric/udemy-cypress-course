@@ -35,14 +35,21 @@
       SET_LOADING (state, flag) {
         state.loading = flag;
       },
-      SHOW_ERROR (state, flag, e) {
-        state.errorMessage = {
-          show: flag,
-          text: 'Sorry. There was an error creating todo item.'
-        };
+      SHOW_ERROR (state) {
+        state.errorMessage.show = true;
+        setTimeout(() => {
+          state.errorMessage.show = false;
+        }, 4000);
       },
-      LOGGED_IN (state, flag) {
-        state.loggedIn = flag;
+      ERROR_MESSAGE ( state, message ) {
+        state.errorMessage.text = message;
+      },
+      LOGGED_IN_MESSAGE (state) {
+        state.loggedIn = true;
+        setTimeout(() => {
+          state.loggedIn = false;
+        }, 4000);
+        
       },
       SET_TODOS (state, todos) {
         state.todos = todos;
@@ -105,19 +112,15 @@
           id: randomId()
         };
         axios.post('/todos', todo).then(() => {  
-                  
           commit('ADD_TODO', todo);
-          
-        }).catch( e => {
-          commit('SHOW_ERROR', true, e.message);
-          setTimeout(() => {
-            commit('SHOW_ERROR', false, e.message);
-          }, 4000);
-            
+        }).catch( () => {
+          commit('SHOW_ERROR');
+          commit('ERROR_MESSAGE', 'Sorry. There was an error creating todo item.');
         });
       },
       completeTodo ({ commit }, todo) {
         axios.patch(`/todos/${todo.id}`, {completed: !todo.completed});
+        commit('COMPLETE_TODO');
       },
       removeTodo ({ commit }, todo) {
         axios.delete(`/todos/${todo.id}`).then(() => {
@@ -139,22 +142,17 @@
           password: state.password,
           username: state.username
         };
-        axios.post('/login', credentials ).then((res) => {
-          if (res.status === 200) {
-            commit('LOGGED_IN', true);
-            setTimeout(() => {
-              commit('LOGGED_IN', false);
-            }, 4000);
-            document.cookie = 'auth=true';
-            router.push({ path: '/' });
-          }
+        axios.post('/login', credentials ).then(() => {
+          commit('LOGGED_IN_MESSAGE');
+          document.cookie = 'auth=true';
+          router.push({ path: '/' });
+        }).catch( () => {
+          commit('SHOW_ERROR');
+          commit('ERROR_MESSAGE', 'Wrong username or password');
         });
       },
       loggedIn ({ commit }) {
-        commit('LOGGED_IN', true);
-        setTimeout(() => {
-          commit('LOGGED_IN', false);
-        }, 4000);
+        commit('LOGGED_IN_MESSAGE');
       }
     }
   });
