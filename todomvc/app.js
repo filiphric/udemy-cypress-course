@@ -180,6 +180,29 @@
     }
   });
 
+  // const signup = Vue.component('signup', {
+  //   template: '#signup',
+  //   computed: {
+  //     username () {
+  //       return this.$store.getters.username;
+  //     },
+  //     password () {
+  //       return this.$store.getters.password;
+  //     }
+  //   },
+  //   methods: {
+  //     setUsername (e) {
+  //       this.$store.dispatch('setUsername', e.target.value);
+  //     },
+  //     setPassword (e) {
+  //       this.$store.dispatch('setPassword', e.target.value);
+  //     },
+  //     signupSend () {
+  //       this.$store.dispatch('signup');
+  //     }
+  //   }
+  // });
+
   const todoapp = Vue.component('todoapp-template', {
     template: '#todoapp-template',
     data() {

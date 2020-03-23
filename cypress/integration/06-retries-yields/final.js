@@ -7,7 +7,7 @@ beforeEach( () => {
 
 });
 
-it('Should have todo item with text "create list of todos"', () => {
+it('Should have todo item with text "create a list of todos"', () => {
 
   cy
     .get('.todo') // parent command
@@ -22,9 +22,9 @@ it('Should have todo item with text "buy milk"', () => {
 
   cy
     .get('.todo-list') // yields ul element
-    .find('li') // yields 4 li elements
-    .eq(0) // yields li element 0
-    .should('contain.text', 'buy milk'); // makes assertion on element 0
+    .find('li') // yields 2 li elements
+    .eq(1) // yields li element 1
+    .should('contain.text', 'buy milk'); // makes assertion on element 1
   
 });
 
@@ -33,15 +33,5 @@ it('Should have one todo item', () => {
   cy
     .get('.todo', {timeout: 30000}) // retries until .todo element is found
     .should('have.length', 1); // retries until number of yielded elements is 1
-  
-});
-
-it('Should have todo item with text "wash dishes" on first position', () => {
-
-  cy
-    .get('.todo', {timeout: 30000}) // parent command, retries 
-    .should('have.length', 3) // child command, makes .get() command retry until it returns 3 elements
-    .first() // child command, yielding from parent
-    .should('contain.text', 'wash dishes');
   
 });
