@@ -56,20 +56,26 @@ module.exports = (req, res, next) => {
   }
 
   if (req.method === 'POST' && req.path === '/reset') {
-    db.setState({
-      todos: [],
-      accounts: []
-    });
+    db
+      .setState({
+        'todos': [],
+        'accounts': []
+      })
+      .write();
 
-    return res.sendStatus(200);
+    return res.sendStatus(204);
   }
 
   if (req.method === 'DELETE' && req.path === '/todos') {
-    db.setState({
-      todos: []
-    });
+    db.set('todos', []).write();
 
-    return res.sendStatus(200);
+    return res.sendStatus(204);
+  }
+
+  if (req.method === 'DELETE' && req.path === '/accounts') {
+    db.set('accounts', []).write();
+
+    return res.sendStatus(204);
   }
 
   if (req.method === 'POST' && req.path === '/login') {

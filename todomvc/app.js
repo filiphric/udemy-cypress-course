@@ -1,4 +1,4 @@
-/* global Vue, Vuex, axios, FileReader, window, Promise */
+/* global Vue, Vuex, axios, VueRouter, Sortable */
 /* eslint-disable no-console */
 (function () {
   Vue.use(Vuex);
@@ -323,7 +323,7 @@
 
   var el = document.getElementById('todo-list');
   if (el) {
-    var sortable = Sortable.create(el, {
+    Sortable.create(el, {
       animation: 150
     });
   } 
