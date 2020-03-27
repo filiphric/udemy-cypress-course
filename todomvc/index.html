@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>TodoMVC</title>
+  <link rel="shortcut icon" href="vendor/cypress-icon.png">
+  <title>TodoMVC - Test automation in Cypress</title>
   <link rel="stylesheet" href="vendor/index.css">
 
   <style>
@@ -40,10 +41,27 @@
     <section style="text-align: center">
       <h1>login</h1>
       <div class="login">
-        <input type="text" placeholder="user name" autocomplete="off" :value="username" @input="setUsername">
-        <input type="password" placeholder="password" autocomplete="off" :value="password" @input="setPassword" @keyup.enter="loginSend">
+        <form>
+          <input type="email" placeholder="email" autocomplete="off" :value="email" @input="setEmail">
+          <input type="password" placeholder="password" autocomplete="off" :value="password" @input="setPassword" @keyup.enter="loginSend">
+        </form>
       </div>
       <button class="login-button" @click="loginSend">Log in</button>
+    </section>
+  </script>
+  <script type="text/x-template" id="signup">
+    <section style="text-align: center">
+      <h1>signup</h1>
+        <div class="signup">
+          <form>
+            <input type="email" placeholder="email" autocomplete="off" :value="email" @input="setEmail">
+            <input type="password" placeholder="password" autocomplete="off" :value="password" @input="setPassword" @keyup.enter="signupSend">
+          </form>
+        </div>
+        <div>
+          <div style="margin-bottom: 16px"><input type="checkbox" :value="sendEmail" @click="sendEmailFlag"><label>Send me a welcome email</label></div>
+          <button class="signup-button" @click="signupSend">Sign up</button>
+        </div>
     </section>
   </script>
 
@@ -67,6 +85,7 @@
   <script src="vendor/axios.min.js"></script>
   <script src="vendor/Sortable.min.js"></script>
   <script src="vendor/vue-router.js"></script>
+  <script src="vendor/vue-observe-visibility.min.js"></script>
   <script src="app.js"></script>
 
 </body>

@@ -12,9 +12,10 @@
   const store = new Vuex.Store({
     state: {
       loading: true,
+      sendEmail: false,
       todos: [],
       newTodo: '',
-      username: '',
+      email: '',
       password: '',
       errorMessage: {
         show: false,
@@ -28,8 +29,9 @@
       loading: state => state.loading,
       errorMessage: state => state.errorMessage,
       loggedIn: state => state.loggedIn,
-      username: state => state.username,
-      password: state => state.password
+      email: state => state.email,
+      password: state => state.password,
+      sendEmail: state => state.sendEmail
     },
     mutations: {
       SET_LOADING (state, flag) {
@@ -49,7 +51,12 @@
         setTimeout(() => {
           state.loggedIn = false;
         }, 4000);
-        
+      },
+      SIGNED_UP_MESSAGE (state) {
+        state.signedUp = true;
+        setTimeout(() => {
+          state.signedUp = false;
+        }, 4000);
       },
       SET_TODOS (state, todos) {
         state.todos = todos;
@@ -73,11 +80,15 @@
         state.newTodo = '';
         console.log('clearing new todo');
       },
-      SET_USERNAME (state, username) {
-        state.username = username;
+      SET_EMAIL (state, email) {
+        state.email = email;
       },
       SET_PASSWORD (state, password) {
         state.password = password;
+      },
+      SEND_EMAIL_FLAG (state, flag) {
+        console.log('I’m doing something');
+        state.sendEmail = flag;
       }
     },
     actions: {
@@ -131,28 +142,51 @@
       clearNewTodo ({ commit }) {
         commit('CLEAR_NEW_TODO');
       },
-      setUsername ({ commit }, username) {
-        commit('SET_USERNAME', username);
+      setEmail ({ commit }, email) {
+        commit('SET_EMAIL', email);
       },
       setPassword ({ commit }, password) {
         commit('SET_PASSWORD', password);
       },
       login ({ commit, state }) {
         const credentials = {
-          password: state.password,
-          username: state.username
+          email: state.email,
+          password: state.password
         };
         axios.post('/login', credentials ).then(() => {
           commit('LOGGED_IN_MESSAGE');
-          document.cookie = 'auth=true';
           router.push({ path: '/' });
         }).catch( () => {
           commit('SHOW_ERROR');
-          commit('ERROR_MESSAGE', 'Wrong username or password');
+          commit('ERROR_MESSAGE', 'Wrong email or password');
         });
       },
       loggedIn ({ commit }) {
         commit('LOGGED_IN_MESSAGE');
+      },
+      signup ({ commit, state }) {
+        const credentials = {
+          email: state.email,
+          password: state.password
+        };
+        const emailFlag = state.sendEmail;
+        axios({
+          method: 'POST',
+          url: '/signup', 
+          data: credentials, 
+          headers: { 
+            sendWelcomeEmail: emailFlag
+          }
+        }).then(() => {
+          commit('LOGGED_IN_MESSAGE');
+          router.push({ path: '/' });
+        }).catch( () => {
+          commit('SHOW_ERROR');
+          commit('ERROR_MESSAGE', 'Could not sign up');
+        });
+      },
+      sendEmailFlag({ commit }, checked) {
+        commit('SEND_EMAIL_FLAG', checked);
       }
     }
   });
@@ -160,16 +194,16 @@
   const login = Vue.component('login', {
     template: '#login',
     computed: {
-      username () {
-        return this.$store.getters.username;
+      email () {
+        return this.$store.getters.email;
       },
       password () {
         return this.$store.getters.password;
       }
     },
     methods: {
-      setUsername (e) {
-        this.$store.dispatch('setUsername', e.target.value);
+      setEmail (e) {
+        this.$store.dispatch('setEmail', e.target.value);
       },
       setPassword (e) {
         this.$store.dispatch('setPassword', e.target.value);
@@ -180,28 +214,34 @@
     }
   });
 
-  // const signup = Vue.component('signup', {
-  //   template: '#signup',
-  //   computed: {
-  //     username () {
-  //       return this.$store.getters.username;
-  //     },
-  //     password () {
-  //       return this.$store.getters.password;
-  //     }
-  //   },
-  //   methods: {
-  //     setUsername (e) {
-  //       this.$store.dispatch('setUsername', e.target.value);
-  //     },
-  //     setPassword (e) {
-  //       this.$store.dispatch('setPassword', e.target.value);
-  //     },
-  //     signupSend () {
-  //       this.$store.dispatch('signup');
-  //     }
-  //   }
-  // });
+  const signup = Vue.component('signup', {
+    template: '#signup',
+    computed: {
+      email () {
+        return this.$store.getters.email;
+      },
+      password () {
+        return this.$store.getters.password;
+      },
+      sendEmail () {
+        return this.$store.getters.sendEmail;
+      }
+    },
+    methods: {
+      setEmail (e) {
+        this.$store.dispatch('setEmail', e.target.value);
+      },
+      setPassword (e) {
+        this.$store.dispatch('setPassword', e.target.value);
+      },
+      signupSend () {
+        this.$store.dispatch('signup');
+      },
+      sendEmailFlag (e) {
+        this.$store.dispatch('sendEmailFlag', e.target.checked);
+      }
+    }
+  });
 
   const todoapp = Vue.component('todoapp-template', {
     template: '#todoapp-template',
@@ -213,9 +253,6 @@
     created () {
       this.$store.dispatch('loadTodos');
     },
-
-    // computed properties
-    // https://vuejs.org/guide/computed.html
     computed: {
       loading () {
         return this.$store.getters.loading;
@@ -251,6 +288,7 @@
     routes: [
       { path: '/', name: 'todoapp', component: todoapp },
       { path: '/login', name: 'login', component: login },
+      { path: '/signup', name: 'signup', component: signup },
       { path: '*', redirect: {name: 'todoapp'} }
     ]
   });
@@ -277,8 +315,7 @@
   function getCookie(name){
     var pattern = RegExp(name + '=.[^;]*');
     var matched = document.cookie.match(pattern);
-    if(matched){
-      // var cookie = matched[0].split('=');
+    if (matched) {
       return true;
     }
     return false;

@@ -12,7 +12,7 @@ body {
 	padding: 0;
 }
 
-button.login-button {
+button.login-button, button.signup-button {
   background: #b83f45;
   cursor: pointer;
   border: none;
@@ -27,7 +27,7 @@ button.login-button {
 	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-button.login-button:hover {
+button.login-button:hover, button.signup-button:hover {
   background: #943338;
   
 }
@@ -69,7 +69,8 @@ body {
 	display: none;
 }
 
-.todoapp, .login {
+.todoapp, .login, .signup {
+  z-index: 0;
 	background: #fff;
 	margin: 0px 0 40px 0;
 	position: relative;
@@ -127,7 +128,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.new-todo, .login input {
+.new-todo, .login input, .signup input {
 	padding: 16px 16px 16px 60px;
 	border: none;
 	background: rgba(0, 0, 0, 0.003);
@@ -413,7 +414,7 @@ html .clear-completed:active {
 	}
 }
 
-.login input {
+.login input, .signup input {
   position: relative;
 	margin: 0;
 	width: 100%;
@@ -456,7 +457,7 @@ html .clear-completed:active {
   animation-duration: 4s;
 }
 
-#loginMessage {
+#loginMessage, #signupMessage {
   -moz-box-shadow:    0 0 5px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background: #58BC82;

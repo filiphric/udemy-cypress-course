@@ -1,21 +1,71 @@
+const sendmail = require('sendmail')();
+ 
 module.exports = (req, res, next) => {
+  
+  const db = req.app.db;
+
+  db.defaults({ todos: [], accounts: []}).write();
 
   if (req.method === 'GET' && req.path === '/login') {
-    
     return res.sendFile(`${__dirname}/index.html`);
+  }
+
+  if (req.method === 'GET' && req.path === '/signup') {
+    return res.sendFile(`${__dirname}/index.html`);
+  }
+
+  if (req.method === 'POST' && req.path === '/signup') {
+
+    if (!req.body.email || !req.body.password) {
+      let response = res.status(401).jsonp({
+        error: 'email and password are required'
+      });
+      return response;
+    }
+
+    if (db.get('accounts').find({email: req.body.email}).value()) {
+      let response = res.status(409).jsonp({
+        error: 'email is already taken'
+      });
+      return response;
+    } else {
+
+      // return auth cookie
+      res.header('Set-Cookie', 'auth=true;');
+
+      // send welcome email if header is true
+      if (req.headers.sendwelcomeemail === 'true') {
+
+        sendmail({
+          from: 'todomvc@filiphric.sk',
+          to: req.body.email,
+          subject: 'Welcome to TodoMVC app',
+          html: 'Your account was successfully created!\nIn the meantime, subscribe to my <a href="https://www.youtube.com/channel/UCDOCAVIhSh5VpJMEfdak1OA">YouTube channel for Cypress tips!</a>',
+        }, function(err, reply) {
+          console.log(err && err.stack);
+          console.dir(reply);
+        });
+
+      }
+
+      db.get('accounts').push(req.body).write();
+      let response = res.status(201).jsonp(req.body);
+      return response;
+    }
 
   }
 
   if (req.method === 'POST' && req.path === '/reset') {
-    req.app.db.setState({
-      todos: []
+    db.setState({
+      todos: [],
+      accounts: []
     });
 
     return res.sendStatus(200);
   }
 
   if (req.method === 'DELETE' && req.path === '/todos') {
-    req.app.db.setState({
+    db.setState({
       todos: []
     });
 
@@ -24,9 +74,12 @@ module.exports = (req, res, next) => {
 
   if (req.method === 'POST' && req.path === '/login') {
 
-    if (req.body.username === 'admin' && req.body.password === 'admin') {
-
-      return res.sendStatus(200);
+    if (db.get('accounts').find(req.body).value()) {
+      res.header('Set-Cookie', 'auth=true;');
+      let response = res.status(200).jsonp({
+        message: 'User is logged in'
+      });
+      return response;
 
     } else {
 

@@ -4,11 +4,12 @@
   "description": "Testing TodoMVC using Cypress",
   "scripts": {
     "open": "cross-env open http://localhost:3000",
-    "start": "./node_modules/.bin/json-server --static . data.json -m middleware.js --config json-server.json -w"
+    "start": "./node_modules/.bin/json-server --static . --watch data.json -m middleware.js --config json-server.json"
   },
   "dependencies": {},
   "devDependencies": {
     "cross-env": "6.0.3",
-    "json-server": "0.15.1"
+    "json-server": "0.15.1",
+    "sendmail": "^1.6.1"
   }
 }
