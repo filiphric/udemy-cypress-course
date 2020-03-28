@@ -16,11 +16,13 @@ beforeEach( () => {
 });
 
 // 👶 challenge #1: check that there are 4 elements on page
+// ⚠️ start this test with 0 items in list
 it('should create 4 elements', () => {
   
 });
 
 // 👦 challenge #2: test that toggle on todo item is checked, but use different method than in video. check documentation: https://docs.cypress.io/guides/references/assertions.html#State
+// ⚠️ start this test with 1 unchecked item
 it('has a checked todo item', () => {
   
 });
@@ -41,6 +43,7 @@ it('should check heading color', () => {
 });
 
 // 💥 challenge #6: check that there are more than 4 elements on page (the assertion for "greater than" is "gte" or "least")
+// ⚠️ start this test with at least 5 items in todo list
 it('should have more than 4 elements', () => {
   
 });
