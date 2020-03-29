@@ -1,6 +1,3 @@
-// multiple assertions using then
-// assertions using should
-
 /// <reference types="cypress" />
 
 beforeEach( () => {
@@ -13,7 +10,8 @@ beforeEach( () => {
 it('Checks text of todo item', () => {
 
   cy
-    .get('.todo');   
+    .get('.todo')
+    .should('contain.text', 'buy milk');
   
 });
 
