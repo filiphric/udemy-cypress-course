@@ -49,7 +49,7 @@ it('Selects the first item and then the next or previous item', () => {
 });
 
 // 🦸‍♀ challenge #5: start test with no todo in list and add timeout to .get() command. make the test pass by adding todo item (as demonstrated in video)
-it('Has one element in todo lis', () => {
+it('Has one element in todo list', () => {
 
   cy
     .get('.todo')

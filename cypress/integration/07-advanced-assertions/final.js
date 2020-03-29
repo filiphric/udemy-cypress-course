@@ -6,6 +6,17 @@ beforeEach( () => {
 
 });
 
+it('Checks text of todo item', () => {
+
+  cy
+    .get('.todo').then( items => {
+
+      expect(items).to.contain.text('wash dishes');
+        
+    });   
+  
+});
+
 it('Should check texts of todo items', () => {
 
   cy

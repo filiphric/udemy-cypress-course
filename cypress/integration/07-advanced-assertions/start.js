@@ -10,14 +10,21 @@ beforeEach( () => {
 
 });
 
-it('Should check texts of todo items', () => {
+it('Checks text of todo item', () => {
 
   cy
     .get('.todo');   
   
 });
 
-it('Should have todo item with text "wash dishes" on first position (solution 1)', () => {
+it('Checks texts of all todo items', () => {
+
+  cy
+    .get('.todo');   
+  
+});
+
+it('Has first todo item with text "wash dishes" (solution 1)', () => {
 
   cy
     .get('.todo')
@@ -26,7 +33,7 @@ it('Should have todo item with text "wash dishes" on first position (solution 1)
   
 });
 
-it('Should have todo item with text "wash dishes" on first position (solution 2)', () => {
+it('Has first todo item with text "wash dishes" (solution 2)', () => {
 
   cy
     .get('.todo');
