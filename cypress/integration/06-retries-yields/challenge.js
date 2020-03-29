@@ -3,6 +3,7 @@
 /* 
   ⚠️ remember you can run single test by using it.only
   📚 this challenge includes working with documentation. you can find it on https://docs.cypress.io, use https://on.cypress.io/<command> or find a command via autocomplete
+  💡 there are additional explanations for video in final.js file of this chapter
 */ 
 
 beforeEach( () => {
@@ -45,4 +46,13 @@ it('Selects the first item and then the next or previous item', () => {
   cy
     .get('.todo');
 
+});
+
+// 🦸‍♀ challenge #5: start test with no todo in list and add timeout to .get() command. make the test pass by adding todo item (as demonstrated in video)
+it('Has one element in todo lis', () => {
+
+  cy
+    .get('.todo')
+    .should('have.length', 1);
+  
 });
