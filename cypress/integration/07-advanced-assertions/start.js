@@ -18,16 +18,16 @@ it('Checks text of todo item', () => {
 it('Checks texts of all todo items', () => {
 
   cy
-    .get('.todo');   
+    .get('.todo');
   
 });
 
-it('Has first todo item with text "wash dishes" (solution 1)', () => {
+it('Has first todo item with text "wash dishes"', () => {
 
   cy
     .get('.todo')
-    .first()
-    .contains('wash dishes');
+    .eq(0)
+    .should('contain.text', 'create todos list');
   
 });
 
