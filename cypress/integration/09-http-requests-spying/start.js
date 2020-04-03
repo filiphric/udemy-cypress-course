@@ -1,9 +1,13 @@
 /// <reference types="cypress" />
 
-it.only('has no elements', () => {
+beforeEach( () => {
 
   cy
     .visit('localhost:3000');
+
+});
+
+it.only('has no elements', () => {
 
   cy
     .get('.todo')
@@ -12,5 +16,5 @@ it.only('has no elements', () => {
 });
 
 it('adds an item to the list', () => {
-  
+
 });

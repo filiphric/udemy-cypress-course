@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 // ⚠️ before you start this challenge, please create at least one todo item
 
 it('gets element on page', () => {

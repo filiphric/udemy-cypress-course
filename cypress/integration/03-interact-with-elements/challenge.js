@@ -8,7 +8,9 @@
   💡 don’t forget about documentation https://docs.cypress.io
 */ 
 
-// 👶 challenge #1: create one todo item 
+/*
+  👶 challenge #1: create one todo item 
+*/
 it('creates a todo item', () => {
 
   cy
@@ -16,7 +18,9 @@ it('creates a todo item', () => {
   
 });
 
-// 👧 challenge #2: check off a todo item 
+/* 
+  👧 challenge #2: check off a todo item 
+*/
 it('completes a todo item (using .click() command)', () => {
 
   cy
@@ -24,7 +28,9 @@ it('completes a todo item (using .click() command)', () => {
   
 });
 
-// 👩 challenge #3: check off a todo item using .check() command (docs at http://on.cypress.io/check)
+/* 
+  👩 challenge #3: check off a todo item using .check() command (docs at http://on.cypress.io/check)
+*/
 it('completes a todo item (using .check() command)', () => {
 
   cy
@@ -32,7 +38,10 @@ it('completes a todo item (using .check() command)', () => {
   
 });
 
-// 🤓 challenge #4: uncheck a completed todo item using .uncheck() command (docs at http://on.cypress.io/uncheck)
+/*
+  🤓 challenge #4: uncheck a completed todo item using .uncheck() 
+  command (docs at http://on.cypress.io/uncheck)
+*/
 it('marks a todo item as not completed (using .uncheck() command)', () => {
 
   cy
@@ -40,7 +49,10 @@ it('marks a todo item as not completed (using .uncheck() command)', () => {
   
 });
 
-// 🦸‍♀ challenge #5: create todo item with text buy milk, but type the word "milk" first, then move with arrows, then type "buy" and add item
+/*
+  🦸‍♀ challenge #5: create todo item with text buy milk, but type the 
+  word "milk" first, then move with arrows, then type "buy" and add item
+*/
 it('creates a todo item with the text "buy milk"', () => {
 
   cy
