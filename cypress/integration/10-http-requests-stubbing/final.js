@@ -1,134 +1,58 @@
-it('stubs items', () => {
+/// <reference types="cypress" />
+
+beforeEach( () => {
 
   cy
     .server();
 
   cy
-    .route('GET', '/todos', [])    
-    .as('getTodoList');
+    .route('GET', '/todos', 'fx:three-items')
+    .as('todosList');
+
+  cy
+    .route({
+      method: 'POST', 
+      url: '/todos',
+      response: [],
+      status: 500
+    })
+    .as('todoCreate');
 
   cy
     .visit('localhost:3000');
 
-  cy
-    .wait('@getTodoList');
+});
+
+it('has zero items in list', () => {
 
   cy
-    .log('there are no items in list')
-    .get('li.todo')
+    .wait('@todosList');
+
+  cy
+    .get('.todo')
     .should('have.length', 0);
   
 });
 
-it('loads items from a fixture', () => {
+it('has stubbed items in todo list', () => {
 
   cy
-    .server();
-
-  cy
-    .route('GET', '/todos', 'fx:two-items')    
-    .as('getTodoList');
-    
-  cy
-    .visit('localhost:3000');
-
-  cy
-    .log('there are two items in list')
-    .get('li.todo')
-    .should('have.length', 2);
-
-});
-
-it('posts new item to the server', () => {
-
-  cy
-    .server();
-
-  cy
-    .route('GET', '/todos', [])    
-    .as('getTodoList');
-
-  cy
-    .route('POST', '/todos')    
-    .as('createTodoItem');  
-
-  cy
-    .visit('localhost:3000');
-
-  cy
-    .log('add new item')
-    .get('.new-todo')
-    .type('test api{enter}');
-
-  cy
-    .wait('@createTodoItem')
-    .its('status')
-    .should('eq', 201);
+    .wait('@todosList');
 
 });
 
 it('shows error when adding new item', () => {
 
   cy
-    .server();
-
-  cy
-    .route('GET', '/todos', [])    
-    .as('getTodoList');
-
-  cy
-    .route({
-      method: 'POST',
-      url: '/todos',
-      response: {},
-      status: 404
-    })    
-    .as('createTodoItem');  
-
-  cy
-    .visit('localhost:3000');
-
-  cy
-    .log('adds new item')
     .get('.new-todo')
-    .type('test api{enter}');
+    .type('wash dishes{enter}');
 
   cy
-    .log('error message appears')
-    .get('#note')
-    .should('be.visible');
+    .wait('@todoCreate');
 
   cy
-    .log('error message disappears')
     .get('#errorMessage')
-    .should('not.be.visible');
-  
-});
-
-it('loads slowly and sees „loading items“ element', () => {
-  
-  cy
-    .server({delay: 10000});
-
-  cy
-    .route('GET', '/todos', [])    
-    .as('getTodoList');
-
-  cy
-    .visit('localhost:3000');
-
-  cy
-    .log('loading message is visible')
-    .get('.loading')
+    .should('contain.text', 'Sorry. There was an error creating todo item.')
     .should('be.visible');
-
-  cy
-    .wait('@getTodoList');
-
-  cy
-    .log('there are no items in list')
-    .get('li.todo')
-    .should('have.length', 0);
-
+  
 });
-

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "take over the world",
+    "completed": false,
+    "id": 1
+  },
+  {
+    "title": "take a nap",
+    "completed": true,
+    "id": 2
+  },
+  {
+    "title": "create world peace",
+    "completed": false,
+    "id": 3
+  }
+]
