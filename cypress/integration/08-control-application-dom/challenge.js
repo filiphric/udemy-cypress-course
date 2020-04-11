@@ -1,5 +1,11 @@
 /// <reference types="cypress" />
 
+/* 
+  ⚠️ remember you can run single test by using it.only
+  ⚠️ some of these test require you to have some todo items 
+  already in app. you can probably figure out which these are 🙂
+*/ 
+
 beforeEach( () => {
 
   cy
@@ -31,16 +37,16 @@ it('have delete icon', () => {
 
 /* 
   👧 challenge #2: try to delete a todo item using .trigger() 
-  command. use devtools to look into event listeners on ".destroy" item
+  command. use devtools to look into event listeners on ".todo" item
 */
 it('deletes a todo item', () => {
 
   cy
-    .get('.todo')
-    .trigger('mouseover');
+    .get('.todo');
     
   cy
-    .get('.destroy');
+    .get('.destroy')
+    .should('not.be.visible');
   
 });
 

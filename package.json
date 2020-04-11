@@ -8,7 +8,6 @@
     "cy:run": "cypress run",
     "install:todomvc": "cd todomvc && npm install",
     "postinstall": "npm run install:todomvc",
-    "reset:todomvc": "cd todomvc && npm run reset",
     "start": "cd todomvc && npm start"
   },
   "devDependencies": {
