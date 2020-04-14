@@ -9,9 +9,9 @@
   after you do .visit() you may not be able to catch that 
   GET /todos command soon enough 
   ⚠️ in this challenge, it is good to start each test with 
-  0 items. it may be annoying at this point, but good news is that
-  in following chapters, we will learn how to reset our app
-  so we always start in the desired state 😎
+  0 todo items. it may be annoying at this point, but good news 
+  is that in following chapters, we will learn how to reset our 
+  app so we always start in the desired state 😎
 */ 
 
 beforeEach( () => {
@@ -71,7 +71,7 @@ it('deletes a todo item', () => {
 });
 
 /* 
-  🤓 challenge #5: create test that checks a request that is sent 
+  🦸‍♂️ challenge #5: create test that checks a request that is sent 
   when a todo item is completed
 */
 it('completes a todo item', () => {
