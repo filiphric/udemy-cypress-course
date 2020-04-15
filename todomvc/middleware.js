@@ -4,8 +4,6 @@ module.exports = (req, res, next) => {
   
   const db = req.app.db;
 
-  db.defaults({ todos: [], accounts: []}).write();
-
   if (req.method === 'GET' && req.path === '/login') {
     return res.sendFile(`${__dirname}/index.html`);
   }
@@ -64,6 +62,20 @@ module.exports = (req, res, next) => {
       .write();
 
     return res.sendStatus(204);
+  }
+
+  if (req.method === 'POST' && req.path === '/todos/seed') {
+    
+    db.set('todos', req.body).write();
+
+    return res.sendStatus(201);
+  }
+
+  if (req.method === 'POST' && req.path === '/accounts/seed') {
+    
+    db.set('accounts', req.body).write();
+
+    return res.sendStatus(201);
   }
 
   if (req.method === 'DELETE' && req.path === '/todos') {

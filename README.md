@@ -106,3 +106,7 @@ Deletes all todos and all accounts.
 ---
 #### DELETE /accounts
 Deletes all accounts.
+
+---
+#### POST /accounts/seed
+Seed an array of accounts. Payload needs to be an array of objects, containing accounts. This request rewrites all accounts.
