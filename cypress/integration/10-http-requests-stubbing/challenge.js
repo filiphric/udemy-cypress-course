@@ -2,10 +2,10 @@
 
 /* 
   ⚠️ remember you can run single test by using it.only
-  ⚠️ bear in mind, that most of the work on this challenge
-  will take place in beforeEach() hook. you need to call .server()
-  and .route() commands before you open your app, or more precisely,
-  before the request you want to route occurs. in case of GET /todos
+  ⚠️ most of the work on this challenge will take place in 
+  beforeEach() hook. you need to call .server() and .route() 
+  commands before you open your app, or more precisely - before 
+  the request you want to route occurs. in case of GET /todos
   request, it is at the moment of opening our application
 */ 
 
