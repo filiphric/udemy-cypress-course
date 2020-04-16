@@ -95,7 +95,8 @@ module.exports = (req, res, next) => {
     if (db.get('accounts').find(req.body).value()) {
       res.header('Set-Cookie', 'auth=true;');
       let response = res.status(200).jsonp({
-        message: 'User is logged in'
+        message: 'User is logged in',
+        token: 'true'
       });
       return response;
 

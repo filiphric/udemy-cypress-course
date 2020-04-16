@@ -19,11 +19,11 @@ it('Logs in a user', () => {
 
   cy
     .get('[type=\'email\']')
-    .type('cypress@filiphric.sk');
+    .type('admin@udemy-cypress-course.com');
 
   cy
     .get('[type=\'password\']')
-    .type('cypress');
+    .type('admin');
 
   cy
     .get('.login-button')

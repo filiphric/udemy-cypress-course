@@ -56,22 +56,6 @@ it('creates a todo item', () => {
 
 /* 
   🤓 challenge #4: create test that checks a request that is sent 
-  when a todo item is deleted
-*/
-it('deletes a todo item', () => {
-
-  cy
-    .get('.new-todo')
-    .type('buy milk{enter}');
-
-  cy
-    .get('.destroy')
-    .click({force: true});
-  
-});
-
-/* 
-  🦸‍♂️ challenge #5: create test that checks a request that is sent 
   when a todo item is completed
 */
 it('completes a todo item', () => {
@@ -83,5 +67,26 @@ it('completes a todo item', () => {
   cy
     .get('.toggle')
     .click();
+  
+});
+
+/* 
+  🦸‍♂️ challenge #5: create two todos in your app and wait for both
+  POST /todos requests to happen. use one .wait() command to test
+  them both. example on how to do thiw can be found in documentation:
+  https://on.cypress.io/wait#You-can-pass-an-array-of-aliases-that-will-be-waited-on-before-resolving
+*/
+it('completes a todo item', () => {
+
+  cy
+    .get('.new-todo')
+    .type('buy milk{enter}');
+
+  cy
+    .get('.new-todo')
+    .type('wash dishes{enter}');
+
+  cy
+    .wait(); // wait for both requests and make assertions on titles
   
 });

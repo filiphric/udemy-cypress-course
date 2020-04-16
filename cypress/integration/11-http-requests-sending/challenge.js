@@ -4,6 +4,9 @@
   ⚠️ remember you can run single test by using it.only
   ⚠️ .visit() command is not included in these tests
   ⚠️ before each of these tests, all todos are deleted
+  💡 there is a LOT you can do with .request() command. read
+  about it in documentation https://on.cypress.io/request and
+  have some fun with it!
 */ 
 
 beforeEach( () => {
@@ -45,7 +48,7 @@ it('seeds data before opening the app', () => {
   🤓 challenge #4: create a todo item in the application and then send
   the request to complete that item. to see that item completed, you 
   need to reload the application using .reload() command. the real challenge
-  in this test is to find the id ot the todo. hint: use .route(), .wait() 
+  in this test is to find the id of your todo. hint: use .route(), .wait() 
   and .then() command to achieve this.
 */
 it('deletes created todo item via api', () => {
