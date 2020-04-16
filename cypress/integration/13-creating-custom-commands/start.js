@@ -13,19 +13,12 @@ beforeEach(() => {
 it('creates 4 todos', () => {
 
   cy
-    .get('.new-todo')
-    .type('buy milk{enter}');
+    .addTodo('buy milk')
+    .addTodo('wash dishes')
+    .addTodo('clean windows')
+    .addTodo('make bed');  
 
   cy
-    .get('.new-todo')
-    .type('wash dishes{enter}');
-
-  cy
-    .get('.new-todo')
-    .type('clean windows{enter}');
-
-  cy
-    .get('.new-todo')
-    .type('make beds{enter}');
+    .addTodo('wipe floors');
   
 });

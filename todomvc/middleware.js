@@ -35,7 +35,7 @@ module.exports = (req, res, next) => {
       if (req.headers.sendwelcomeemail === 'true') {
 
         sendmail({
-          from: 'todomvc@filiphric.sk',
+          from: 'todomvc@udemy-cypress-course.com',
           to: req.body.email,
           subject: 'Welcome to TodoMVC app',
           html: 'Your account was successfully created!\nIn the meantime, subscribe to my <a href="https://www.youtube.com/channel/UCDOCAVIhSh5VpJMEfdak1OA">YouTube channel for Cypress tips!</a>',
