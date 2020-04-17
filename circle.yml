@@ -10,5 +10,6 @@ workflows:
     jobs:
       - cypress/install:
           build: 'npm install'
+          working_directory: todomvc
       - cypress/run: # "run" job comes from "cypress" orb
           start: 'npm start'
