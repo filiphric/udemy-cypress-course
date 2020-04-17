@@ -21,3 +21,8 @@ it('resets database before opening app', () => {
   open automatically when running cypress. I tweeted about that here:
   https://twitter.com/filip_hric/status/1240700715854487553
 */ 
+
+/* 
+  🔥 challenge #3: if you are on fire, try to create a task that will 
+  seed a database and will take json object as an argument
+*/ 

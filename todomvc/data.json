@@ -1,10 +1,4 @@
 {
-  "todos": [
-    {
-      "title": "take over the world",
-      "completed": false,
-      "id": 1
-    }
-  ],
+  "todos": [],
   "accounts": []
 }
