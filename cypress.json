@@ -2,5 +2,6 @@
   "baseUrl": null,
   "viewportWidth": 600,
   "viewportHeight": 800,
+  "testFiles": "**/*.spec.js",
   "$schema": "https://on.cypress.io/cypress.schema.json"
 }
