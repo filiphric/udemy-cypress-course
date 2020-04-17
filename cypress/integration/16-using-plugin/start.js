@@ -5,13 +5,13 @@ beforeEach(() => {
   cy
     .request('POST', 'localhost:3000/todos/seed', [
       {
-        'title': 'take over the world',
+        'title': 'buy milk',
         'completed': false,
         'id': 1
       },
       {
-        'title': 'take a nap',
-        'completed': true,
+        'title': 'wash dishes',
+        'completed': false,
         'id': 2
       }
     ]);
