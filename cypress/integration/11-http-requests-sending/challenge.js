@@ -36,9 +36,8 @@ it('creates a completed todo item', () => {
 
 /* 
   👨 challenge #3: in README.md, find an api endpoint that
-  seeds the database. try to seed it with one of the fixtures.
-  then write a simple test that verifies that you have used the
-  fixture correctly
+  seeds the database. then write a simple test that verifies 
+  that you have seeded the app correctly
 */
 it('seeds data before opening the app', () => {
   
