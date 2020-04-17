@@ -87,7 +87,6 @@
         state.password = password;
       },
       SEND_EMAIL_FLAG (state, flag) {
-        console.log('I’m doing something');
         state.sendEmail = flag;
       }
     },

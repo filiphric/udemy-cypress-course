@@ -1,5 +1,11 @@
 /// <reference types="cypress" />
-// ⚠️ before you start this challenge, please create at least one todo item
+/* 
+
+  ⚠️ before you start this challenge, please create at least one todo item
+  💡 there is a LOT that can be learned about selectors, I recommend
+  looking into W3Schools https://www.w3schools.com/cssref/css_selectors.asp
+
+*/
 
 it('gets element on page', () => {
 

@@ -1,7 +1,6 @@
 {
+  "baseUrl": null,
   "viewportWidth": 600,
   "viewportHeight": 800,
-  "ignoreTestFiles": [],
-  "env": {},
   "$schema": "https://on.cypress.io/cypress.schema.json"
 }
