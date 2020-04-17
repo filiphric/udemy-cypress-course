@@ -1,4 +1,4 @@
-// const sendmail = require('sendmail')();
+const sendmail = require('sendmail')();
  
 module.exports = (req, res, next) => {
   
@@ -34,15 +34,15 @@ module.exports = (req, res, next) => {
       // send welcome email if header is true
       if (req.headers.sendwelcomeemail === 'true') {
 
-        // sendmail({
-        //   from: 'todomvc@udemy-cypress-course.com',
-        //   to: req.body.email,
-        //   subject: 'Welcome to TodoMVC app',
-        //   html: 'Your account was successfully created!\nIn the meantime, subscribe to my <a href="https://www.youtube.com/channel/UCDOCAVIhSh5VpJMEfdak1OA">YouTube channel for Cypress tips!</a>',
-        // }, function(err, reply) {
-        //   console.log(err && err.stack);
-        //   console.dir(reply);
-        // });
+        sendmail({
+          from: 'todomvc@udemy-cypress-course.com',
+          to: req.body.email,
+          subject: 'Welcome to TodoMVC app',
+          html: 'Your account was successfully created!\nIn the meantime, subscribe to my <a href="https://www.youtube.com/channel/UCDOCAVIhSh5VpJMEfdak1OA">YouTube channel for Cypress tips!</a>',
+        }, function(err, reply) {
+          console.log(err && err.stack);
+          console.dir(reply);
+        });
 
       }
 

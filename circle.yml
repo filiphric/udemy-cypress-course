@@ -8,5 +8,7 @@ orbs:
 workflows:
   build:
     jobs:
+      - cypress/install:
+          build: 'npm install'
       - cypress/run: # "run" job comes from "cypress" orb
           start: 'npm start'
