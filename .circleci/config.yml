@@ -10,3 +10,6 @@ workflows:
           requires:
             - cypress/install
           start: npm start
+          record: true
+          parallel: true
+          parallelism: 3
