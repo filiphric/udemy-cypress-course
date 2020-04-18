@@ -1,6 +1,9 @@
 # Cypress automation for people in a hurry
 Repository for a course hosted on Udemy on the topic of test automation in Cypress. The name of the course is a homage to [Neil DeGrasse Tyson’s book](https://www.amazon.com/Astrophysics-People-Hurry/dp/B06XB2PX7G) which I recommend you give a read.
 
+## About author
+I’m Filip. I’m a QA lead at [Slido](https://www.sli.do/) and [Cypress.io ambassador](https://cypress.io/ambassadors/)
+
 ## What’s in here
 In this repo, you can find an application we are testing throughout the course as well as all the examples in video course. Each coding video chapter starts with `start.js` file, so you can follow along and code with me. The final state of the code can be found in `final.js` file. Some of the chapters contain `challenge.js` file too. As the name suggest, you can find additional examples and challenges to improve your Cypress skills.
 
