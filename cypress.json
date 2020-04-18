@@ -2,6 +2,6 @@
   "baseUrl": null,
   "viewportWidth": 600,
   "viewportHeight": 800,
-  "testFiles": "**/*.*",
+  "testFiles": "**/99-testing-application/*.js",
   "$schema": "https://on.cypress.io/cypress.schema.json"
 }
