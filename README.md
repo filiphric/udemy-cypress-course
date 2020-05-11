@@ -1,5 +1,5 @@
 # Cypress automation for people in a hurry
-Repository for a course hosted on Udemy on the topic of test automation in Cypress. The name of the course is a homage to [Neil DeGrasse Tyson’s book](https://www.amazon.com/Astrophysics-People-Hurry/dp/B06XB2PX7G) which I recommend you give a read.
+Repository for a course hosted on [Udemy on the topic of test automation in Cypress](https://www.udemy.com/course/cypress-test-automation-for-people-in-a-hurry/?referralCode=21A875FF429457CF641D). The name of the course is a homage to [Neil DeGrasse Tyson’s book](https://www.amazon.com/Astrophysics-People-Hurry/dp/B06XB2PX7G) which I recommend you give a read.
 
 ## About author
 I’m Filip. I’m a QA lead at [Slido](https://www.sli.do/) and [Cypress.io ambassador](https://cypress.io/ambassadors/)
