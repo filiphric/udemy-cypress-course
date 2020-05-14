@@ -2,5 +2,5 @@
   "baseUrl": null,
   "viewportWidth": 600,
   "viewportHeight": 800,
-  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "$schema": "https://on.cypress.io/cypress.schema.json"
 }
