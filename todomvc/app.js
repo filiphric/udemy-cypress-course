@@ -121,8 +121,8 @@
           completed: false,
           id: randomId()
         };
-        axios.post('/todos', todo).then(() => {  
-          commit('ADD_TODO', todo);
+        axios.post('/todos', todo).then((todoItem) => {
+          commit('ADD_TODO', todoItem.data);
         }).catch( () => {
           commit('SHOW_ERROR');
           commit('ERROR_MESSAGE', 'Sorry. There was an error creating todo item.');
@@ -171,9 +171,9 @@
         const emailFlag = state.sendEmail;
         axios({
           method: 'POST',
-          url: '/signup', 
-          data: credentials, 
-          headers: { 
+          url: '/signup',
+          data: credentials,
+          headers: {
             sendWelcomeEmail: emailFlag
           }
         }).then(() => {
@@ -278,7 +278,7 @@
       removeTodo (todo) {
         this.$store.dispatch('removeTodo', todo);
       }
-        
+
     }
   });
 
@@ -325,6 +325,6 @@
     Sortable.create(el, {
       animation: 150
     });
-  } 
+  }
 
 })();
