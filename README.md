@@ -29,7 +29,7 @@ Returns an array of all todo items.
 #### POST /todos
 Creates a todo item. 
 
-**Example of a an item payload:**
+**Example of an item payload:**
 ```json
 {
   "title": "buy milk",
